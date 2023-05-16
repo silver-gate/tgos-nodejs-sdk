@@ -1,0 +1,32 @@
+{
+  "name": "tgos-nodejs-sdk",
+  "version": "1.0.0",
+  "description": "地理資訊圖資雲服務平台 TGOS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunyenHuang/tgos-nodejs-sdk.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chunyenHuang/tgos-nodejs-sdk/issues"
+  },
+  "homepage": "https://github.com/chunyenHuang/tgos-nodejs-sdk#readme",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "qs": "^6.11.2",
+    "sax": "^1.2.4",
+    "xml2js": "^0.5.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "eslint": "^8.10.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.5.1"
+  }
+}
