@@ -75,9 +75,36 @@ describe('TGOS Test', () => {
     expect(data.AddressList).toBeDefined();
   });
 
-  test('Address Query', async () => {
+  test('Address Query (raw response)', async () => {
     const result = await tgos.queryAddress('臺北市中正區重慶南路1段122號');
+    console.log(result);
     expect(result.AddressList[0].X).toEqual(121.512458); // Longitude
     expect(result.AddressList[0].Y).toEqual(25.039966); // Latitude
   });
+
+  test('Address Query', async () => {
+    tgos.returnRawData = false;
+    const [result] = await tgos.queryAddress('臺北市中正區重慶南路1段122號');
+    console.log(result);
+    expect(result).toEqual({
+      lat: 25.039966,
+      lng: 121.512458,
+      address: '臺北市中正區建國里4鄰重慶南路一段122號',
+      details: {
+        county: '臺北市',
+        town: '中正區',
+        village: '建國里',
+        neighborhood: '4鄰',
+        road: '重慶南路',
+        section: '1',
+        lane: '',
+        alley: '',
+        subAlley: '',
+        tong: '',
+        area: '',
+        number: '122號'
+      }
+    });
+  });
+
 });

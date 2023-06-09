@@ -8,7 +8,7 @@ module.exports = class TGOS {
     apiUrl = 'https://addr.tgos.tw/addrws/v40/QueryAddr.asmx/QueryAddr',
     appId = '',
     appKey = '',
-    returnRawData = true,
+    returnRawData = false,
     debug,
   }) {
     this.apiUrl = apiUrl;
@@ -109,6 +109,42 @@ module.exports = class TGOS {
       return response;
     }
 
-    return response.AddressList;
+    return response.AddressList.map(({
+      X,
+      Y,
+      FULL_ADDR,
+      COUNTY,
+      TOWN,
+      VILLAGE,
+      NEIGHBORHOOD,
+      ROAD,
+      SECTION,
+      LANE,
+      ALLEY,
+      SUB_ALLEY,
+      TONG,
+      AREA,
+      NUMBER,
+    }) => {
+      return {
+        lat: Y,
+        lng: X,
+        address: FULL_ADDR,
+        details: {
+          county: COUNTY,
+          town: TOWN,
+          village: VILLAGE,
+          neighborhood: NEIGHBORHOOD,
+          road: ROAD,
+          section: SECTION,
+          lane: LANE,  
+          alley: ALLEY,
+          subAlley: SUB_ALLEY,
+          tong: TONG,
+          area: AREA,
+          number: NUMBER,
+        },
+      };
+    });
   }
 };
