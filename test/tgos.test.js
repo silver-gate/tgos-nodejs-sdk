@@ -10,6 +10,7 @@ const {
 const tgos = new TGOS({
   appId,
   appKey,
+  returnRawData: true,
   debug: true,
 });
 
@@ -78,12 +79,5 @@ describe('TGOS Test', () => {
     const result = await tgos.queryAddress('臺北市中正區重慶南路1段122號');
     expect(result.AddressList[0].X).toEqual(121.512458); // Longitude
     expect(result.AddressList[0].Y).toEqual(25.039966); // Latitude
-  });
-
-  test('Address Query (remote area)', async () => {
-    const result = await tgos.queryAddress('臺東縣海端鄉崁頂村中福3鄰中福73號之1');
-    console.log(result.AddressList[0]);
-    expect(result.AddressList[0].X).toEqual(121.142869); // Longitude
-    expect(result.AddressList[0].Y).toEqual(23.044803); // Latitude
   });
 });

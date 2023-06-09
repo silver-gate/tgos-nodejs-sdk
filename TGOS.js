@@ -8,11 +8,13 @@ module.exports = class TGOS {
     apiUrl = 'https://addr.tgos.tw/addrws/v40/QueryAddr.asmx/QueryAddr',
     appId = '',
     appKey = '',
+    returnRawData = true,
     debug,
   }) {
     this.apiUrl = apiUrl;
     this.oAPPId = appId;
     this.oAPIKey = appKey;
+    this.returnRawData = returnRawData;
     this.debug = debug;
   }
 
@@ -66,6 +68,7 @@ module.exports = class TGOS {
     const {
       oAPPId,
       oAPIKey,
+      returnRawData,
     } = this;
 
     const options = {
@@ -100,6 +103,12 @@ module.exports = class TGOS {
       headers: {},
     };
 
-    return this.request(options);
+    const response = await this.request(options);
+
+    if (returnRawData) {
+      return response;
+    }
+
+    return response.AddressList;
   }
 };
