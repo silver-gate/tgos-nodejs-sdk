@@ -25,13 +25,17 @@ module.exports = class TGOS {
   }
 
   xmlParser(xmlString = '') {
-    const regex = new RegExp(/<string[^>]*>(.*?)<\/string>/gs);
-    const dataString = xmlString
-      .match(regex)[0]
-      .replace(/<\/?string[^>]*>/g, '')
-      .replace(/	/g, '');
+    try {
+      const regex = new RegExp(/<string[^>]*>(.*?)<\/string>/gs);
+      const dataString = xmlString
+        .match(regex)[0]
+        .replace(/<\/?string[^>]*>/g, '')
+        .replace(/	/g, '');
 
-    return JSON.parse(dataString);
+      return JSON.parse(dataString);
+    } catch (e) {
+      throw new Error(`Failed to parse XML string ${xmlString}`)
+    }
   }
 
   async request(payload, inRetries = 0) {
@@ -103,7 +107,14 @@ module.exports = class TGOS {
       headers: {},
     };
 
-    const response = await this.request(options);
+    let response;
+    try {
+      response = await this.request(options);
+    } catch (e) {
+      response = {
+        AddressList: [],
+      };
+    }
 
     if (returnRawData) {
       return response;
@@ -137,7 +148,7 @@ module.exports = class TGOS {
           neighborhood: NEIGHBORHOOD,
           road: ROAD,
           section: SECTION,
-          lane: LANE,  
+          lane: LANE,
           alley: ALLEY,
           subAlley: SUB_ALLEY,
           tong: TONG,

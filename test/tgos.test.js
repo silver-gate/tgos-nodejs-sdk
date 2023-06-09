@@ -107,4 +107,9 @@ describe('TGOS Test', () => {
     });
   });
 
+  test('Failed Address Query with wrong address', async () => {
+    tgos.returnRawData = false;
+    const results = await tgos.queryAddress('嘉義市民雄鄉牛斗山78-1號');
+    expect(results.length).toEqual(0);
+  });
 });
