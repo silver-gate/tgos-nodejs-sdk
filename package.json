@@ -1,6 +1,6 @@
 {
   "name": "tgos-nodejs-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "地理資訊圖資雲服務平台 TGOS",
   "main": "index.js",
   "scripts": {
