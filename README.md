@@ -17,9 +17,29 @@ const TGOS = require('tgos-nodejs-sdk');
 const tgos = new TGOS({
   appId,
   appKey,
+  returnRawData: false,
+  debug: true,
 });
 
-const result = await tgos.queryAddress('ADDRESS_STRING', {
+const [{
+  lat: 25.039966,
+  lng: 121.512458,
+  address: '臺北市中正區建國里4鄰重慶南路一段122號',
+  details: {
+    county: '臺北市',
+    town: '中正區',
+    village: '建國里',
+    neighborhood: '4鄰',
+    road: '重慶南路',
+    section: '1',
+    lane: '',
+    alley: '',
+    subAlley: '',
+    tong: '',
+    area: '',
+    number: '122號'
+  }
+}] = await tgos.queryAddress('臺北市中正區建國里4鄰重慶南路一段122號', {
   oSRS: 'EPSG:4326', // See supported values
   oFuzzyType: 2,
   oResultDataType: 'JSON',
@@ -39,6 +59,7 @@ const result = await tgos.queryAddress('ADDRESS_STRING', {
   oCanIgnoreNeighborhood: true,
   oReturnMaxCount: 1,
 });
+
 ```
 
 ## Supported SRS

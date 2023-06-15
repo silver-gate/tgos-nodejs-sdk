@@ -99,7 +99,7 @@ module.exports = class TGOS {
           oIsSameNumber_SubNumber: true,
           oCanIgnoreVillage: true,
           oCanIgnoreNeighborhood: true,
-          oReturnMaxCount: 1,
+          oReturnMaxCount: 3,
         }, config, {
           oResultDataType: 'JSON', // lock this field
         }),

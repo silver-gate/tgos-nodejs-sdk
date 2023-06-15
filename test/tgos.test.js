@@ -84,8 +84,9 @@ describe('TGOS Test', () => {
 
   test('Address Query', async () => {
     tgos.returnRawData = false;
+
     const [result] = await tgos.queryAddress('臺北市中正區重慶南路1段122號');
-    console.log(result);
+
     expect(result).toEqual({
       lat: 25.039966,
       lng: 121.512458,
@@ -109,7 +110,9 @@ describe('TGOS Test', () => {
 
   test('Failed Address Query with wrong address', async () => {
     tgos.returnRawData = false;
+
     const results = await tgos.queryAddress('嘉義市民雄鄉牛斗山78-1號');
+
     expect(results.length).toEqual(0);
   });
 });
