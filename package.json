@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/chunyenHuang/tgos-nodejs-sdk.git"
+    "url": "git+https://github.com/silver-gate/tgos-nodejs-sdk.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/chunyenHuang/tgos-nodejs-sdk/issues"
+    "url": "https://github.com/silver-gate/tgos-nodejs-sdk/issues"
   },
-  "homepage": "https://github.com/chunyenHuang/tgos-nodejs-sdk#readme",
+  "homepage": "https://github.com/silver-gate/tgos-nodejs-sdk#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "qs": "^6.11.2"
